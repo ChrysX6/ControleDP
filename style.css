@@ -1,0 +1,252 @@
+:root{
+  --verde:#0b4d2c;
+  --verde-esc:#073820;
+  --dourado:#c9a227;
+  --bg:#f5f6f5;
+  --branco:#ffffff;
+  --texto:#22301f;
+  --borda:#e0e0d8;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:var(--bg);
+  color:var(--texto);
+}
+
+.topbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  background:var(--verde);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:10px 20px 14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+
+.logo-fixed{
+  height:90px;
+  width:auto;
+  border-radius:10px;
+  background:#fff;
+  padding:6px;
+  margin-bottom:6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+
+.topbar h1{
+  font-size:1.3rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  text-align:center;
+}
+
+.app-layout{
+  display:flex;
+  margin-top:150px;
+  min-height:calc(100vh - 150px);
+}
+
+.sidebar{
+  width:220px;
+  background:var(--verde-esc);
+  color:#fff;
+  padding:20px 14px;
+  flex-shrink:0;
+}
+
+.sidebar h3{
+  color:var(--dourado);
+  margin-bottom:12px;
+  font-size:1rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.month-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:16px;
+}
+
+.month-list li{
+  padding:9px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:.92rem;
+  transition:.2s;
+}
+
+.month-list li:hover{background:rgba(255,255,255,.08);}
+.month-list li.active{background:var(--dourado); color:#22301f; font-weight:600;}
+
+.btn-add-month{
+  width:100%;
+  background:var(--dourado);
+  color:#22301f;
+  border:none;
+  padding:10px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.content{
+  flex:1;
+  padding:24px 30px;
+  overflow-x:auto;
+}
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:18px;
+  border-bottom:2px solid var(--borda);
+}
+
+.tab-btn{
+  background:none;
+  border:none;
+  padding:10px 16px;
+  cursor:pointer;
+  font-size:.92rem;
+  color:var(--texto);
+  border-bottom:3px solid transparent;
+  transition:.2s;
+}
+
+.tab-btn.active{
+  border-bottom:3px solid var(--verde);
+  color:var(--verde);
+  font-weight:700;
+}
+
+.toolbar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+
+.btn{
+  border:none;
+  padding:9px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:.88rem;
+  font-weight:600;
+  transition:.2s;
+}
+
+.btn-primary{background:var(--verde); color:#fff;}
+.btn-primary:hover{background:var(--verde-esc);}
+
+.btn-secondary{background:var(--dourado); color:#22301f;}
+.btn-secondary:hover{opacity:.85;}
+
+.search-box{
+  padding:9px 12px;
+  border-radius:6px;
+  border:1px solid var(--borda);
+  flex:1;
+  min-width:180px;
+}
+
+.loading-indicator{
+  color:var(--verde);
+  font-size:.85rem;
+  font-style:italic;
+}
+
+.table-wrapper{
+  background:var(--branco);
+  border-radius:10px;
+  overflow:auto;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  max-height:65vh;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-size:.85rem;
+  min-width:900px;
+}
+
+thead tr{
+  background:var(--verde);
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+th, td{
+  padding:9px 12px;
+  border-bottom:1px solid var(--borda);
+  text-align:left;
+  white-space:nowrap;
+}
+
+tbody tr:hover{background:#f0f7f1;}
+
+.row-actions button{
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:1rem;
+  margin-right:6px;
+}
+
+.modal-overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.5);
+  display:flex; align-items:center; justify-content:center;
+  z-index:999;
+}
+
+.modal-overlay.hidden{display:none;}
+
+.modal-box{
+  background:#fff;
+  padding:24px;
+  border-radius:10px;
+  width:min(500px, 92vw);
+  max-height:85vh;
+  overflow-y:auto;
+}
+
+.modal-box h3{margin-bottom:14px; color:var(--verde-esc);}
+
+.modal-fields{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.modal-fields label{font-size:.8rem; font-weight:600; color:var(--texto);}
+.modal-fields input{
+  width:100%;
+  padding:8px 10px;
+  border-radius:6px;
+  border:1px solid var(--borda);
+  margin-top:3px;
+}
+
+.modal-actions{display:flex; gap:10px; justify-content:flex-end;}
+
+@media(max-width:768px){
+  .app-layout{flex-direction:column;}
+  .sidebar{width:100%;}
+  .logo-fixed{height:65px;}
+}
